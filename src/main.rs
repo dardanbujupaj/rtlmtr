@@ -1,14 +1,14 @@
+use axum::{
+    extract::{Path, State},
+    http::StatusCode,
+    response::IntoResponse,
+    routing::get,
+    Router,
+};
 use std::{
     collections::HashMap,
     env,
     sync::{Arc, RwLock},
-};
-use axum::{
-    extract::{Path, State},
-    http::{header, StatusCode},
-    response::IntoResponse,
-    routing::{get, post},
-    Router,
 };
 use tokio::time::Instant;
 
