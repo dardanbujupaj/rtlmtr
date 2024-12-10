@@ -34,6 +34,7 @@ async fn main() {
 
     let app = Router::new()
         .route("/:id", get(handle_request))
+        .route("/health", get(health))
         .with_state(Arc::clone(&state));
 
     let port = env::var("PORT").unwrap_or("3000".to_string());
@@ -110,4 +111,8 @@ async fn handle_request(
             ("x-ratelimit-remaining", (tokens - 1).to_string()),
         ],
     )
+}
+
+async fn health() -> impl IntoResponse {
+    (StatusCode::OK)
 }
